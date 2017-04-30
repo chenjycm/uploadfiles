@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>上传文件</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/Huploadify.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <script src="js/jquery-3.1.1.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.Huploadify.js"></script>
+    <script type="text/javascript">
+		$(function(){
+			$('#upload-1,#upload-2,#upload-3').Huploadify({
+				auto:true,
+				fileTypeExts:'*.jpg;*.png;*.gif;*.doc;*.docx;*.xls;*.xlsx',
+				multi:true,
+				formData:{key:123456,key2:'vvvv'},
+				fileSizeLimit:9999,
+				showUploadedPercent:false,//是否实时显示上传的百分比，如20%
+				showUploadedSize:true,
+				removeTimeout:9999999,
+				uploader:'/test/postForm',
+				onUploadStart:function(){
+					//alert('开始上传');
+					},
+				onInit:function(){
+					//alert('初始化');
+					},
+				onUploadComplete:function(){
+					//alert('上传完成');
+					},
+				onDelete:function(file){
+					console.log('删除的文件：'+file);
+					console.log(file);
+				}
+			});
+			$(document).on('click','#ex-5-id',function(){
+				var data='testfomstring';
+				$.post('http://115.28.10.122/test/postForm',data,function(res){
+					console.log(res);
+				});
+			});
+		});
+	</script>
+</head>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <body>
+    <h1>你好，世界！</h1>
+	<div class="container">
+		<div class="upload-box col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 ">
+		<div class="example-1">
+			<h3 class="title">example-1</h3>
+  
+			<div id="upload-1"></div>
+		</div>
+		<div class="example-2">
+			<h3 class="title">example-2</h3>
+			<div id="upload-2"></div>
+		</div>
+		<div class="example-3">
+			<h3 class="title">example-3</h3>
+			<form name="input" action="/" method="post">
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">属性1</span>
+				  <input type="text" class="form-control" placeholder="属性1" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">属性2</span>
+				  <input type="text" class="form-control" placeholder="属性2" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">属性3</span>
+				  <input type="text" class="form-control" placeholder="属性3" aria-describedby="basic-addon1">
+				</div>
+				<div id="upload-3"></div>
+				<input class="btn btn-primary" type="submit" value="Submit">
+			</form>
+		</div>
+		<div class="example-4">
+			<form name="input" action="/test/postForm" method="post">
+				<p>First name: <input type="text" name="fname" /></p>
+  				<p>Last name: <input type="text" name="lname" /></p>
+ 			    <input type="submit" value="Submit" />
+			</form>
+		</div>
+		<div class="example-5">
+			<h3 class="title">example-5</h3>
+			<input type="button" name="send" id="ex-5-id" value="send">
+		</div>
+
+		</div>
+	</div>
+
+  
+
+
+  </body>
+</html>
