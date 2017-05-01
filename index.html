@@ -9,7 +9,7 @@
     <link href="css/Huploadify.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
     <script src="js/jquery-3.1.1.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.Huploadify.js"></script>
     <script type="text/javascript">
 		$(function(){
@@ -38,7 +38,7 @@
 				}
 			});
 			$(document).on('click','#ex-5-id',function(){
-				var data='testfomstring';
+				var data=$('#ex-5-text1').val();
 				$.post('http://115.28.10.122/test/postForm',data,function(res){
 					console.log(res);
 				});
@@ -87,6 +87,7 @@
 			</form>
 		</div>
 		<div class="example-4">
+			<h3 class="title">example-4</h3>
 			<form name="input" action="/test/postForm" method="post">
 				<p>First name: <input type="text" name="fname" /></p>
   				<p>Last name: <input type="text" name="lname" /></p>
@@ -95,6 +96,7 @@
 		</div>
 		<div class="example-5">
 			<h3 class="title">example-5</h3>
+			<p><input id="ex-5-text1" type="text" name="name" placeholder="请输入内容"></p>
 			<input type="button" name="send" id="ex-5-id" value="send">
 		</div>
 
